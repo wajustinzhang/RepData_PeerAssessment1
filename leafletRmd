@@ -1,0 +1,22 @@
+---
+title: "Demo usage of leaflet package"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(leaflet)
+```
+
+### Script creation time 
+```{r eval=TRUE, echo=FALSE, comment=""}
+format(file.info("leaflet.Rmd")$ctime, "%Y-%m-%d")
+```
+
+```{r eval=TRUE, echo=FALSE}
+links<-c("<a href=www.google.com>Google headquarter</a>", "<a href=www.yahoo.com>Yahoo headquarter</a>" )
+
+df<-data.frame(lat=c(37.422230,  37.3688), 
+               lng=c(-122.084015, -122.0363))
+df %>% leaflet() %>% addTiles() %>% addMarkers(popup=links, clusterOptions=markerClusterOptions())
+```
